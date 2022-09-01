@@ -38,13 +38,12 @@ public class UserController {
     @GetMapping( "/{id}" )
     public ResponseEntity<UserDto> findById( @PathVariable String id ) {
         User user = userService.findById(id);
-        System.out.println("Que monda esta pasado");
         System.out.println("usuario buscado "  + user.getName() + " id " + user.getId());
         return new ResponseEntity<UserDto>(userService.fromEntityToDto(user),HttpStatus.ACCEPTED);
     }
 
 
-    @PostMapping("/hola")
+    @PostMapping()
     public ResponseEntity<UserDto> create( @RequestBody UserDto userDto ) {
         User user = userService.fromDtoToEntity(userDto);
         return new ResponseEntity<UserDto> (userService.fromEntityToDto(userService.create(user)),HttpStatus.ACCEPTED);
