@@ -1,6 +1,6 @@
 package edu.eci.usermicro.entities;
 
-public class User {
+public class User{
     String id, name, email, lastName, createdAt;
 
     public User(String id, String name, String email,String lastName,String createdAt){

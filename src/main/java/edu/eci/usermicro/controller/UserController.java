@@ -38,15 +38,16 @@ public class UserController {
     @GetMapping( "/{id}" )
     public ResponseEntity<UserDto> findById( @PathVariable String id ) {
         User user = userService.findById(id);
-        System.out.println("usuario buscado "  + user.getName() + " id " + user.getId());
         return new ResponseEntity<UserDto>(userService.fromEntityToDto(user),HttpStatus.ACCEPTED);
     }
 
 
     @PostMapping()
-    public ResponseEntity<UserDto> create( @RequestBody UserDto userDto ) {
+    public ResponseEntity<UserDto> create(@RequestBody UserDto userDto ) {
         User user = userService.fromDtoToEntity(userDto);
-        return new ResponseEntity<UserDto> (userService.fromEntityToDto(userService.create(user)),HttpStatus.ACCEPTED);
+        user = userService.create(user);
+        UserDto userDto1= userService.fromEntityToDto(user);
+        return new ResponseEntity<UserDto>(userDto1,HttpStatus.ACCEPTED);
     }
 
     @PutMapping( "/{id}" )
@@ -57,9 +58,8 @@ public class UserController {
     }
 
     @DeleteMapping( "/{id}" )
-    public ResponseEntity<Boolean> delete( @PathVariable String id ) {
-        //TODO implement this method using UserService
-        return null;      
+    public boolean delete( @PathVariable String id ) {
+        return userService.deleteById(id);
     }
 }
 

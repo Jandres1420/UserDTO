@@ -26,7 +26,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(User user) {
-        return users.put(Long.toString(counter.incrementAndGet()), user);
+        users.put(Long.toString(counter.incrementAndGet()), user);
+
+        return users.get(Long.toString(users.size()));
     }
 
     @Override
@@ -40,8 +42,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteById(String id) {
-        users.remove(id);        
+    public boolean deleteById(String id) {
+        boolean flag;
+        if(users.containsKey(id)){
+            users.remove(id);
+            flag = true;
+        }else{flag = false;}
+        return flag;
     }
 
     @Override
@@ -56,7 +63,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> fromEntityToDtos(List<User> user) {
+    public List<UserDto> fromEntityToDtos(List<User> user){
         return user.stream().map(x -> fromEntityToDto(x)).collect(Collectors.toList());
     }
     
