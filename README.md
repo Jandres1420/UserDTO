@@ -199,7 +199,11 @@ About
 ## buscar todos los usuarios en la base de datos 
 ![](img/getall.png)
 ## Eliminar un usuario segun su id
+Son 3 usuarios que estan agregados actualmente despues de hacer la peticion Delete
+solo quedan 2 
 ![](img/delete.png)
 ## Update
 ![](img/put.png)
+Se puede ver como anteriormente se veia la información con el id 241 y como su información fue actualizada con la petición PUT
+![](img/cambio%20final.png)
 
