@@ -12,7 +12,7 @@ import edu.eci.usermicro.dto.UserDto;
 import edu.eci.usermicro.entities.User;
 import edu.eci.usermicro.service.UserService;
 
-@Service
+//@Service
 public class UserServiceImpl implements UserService {
 
     private HashMap<String,User> users;

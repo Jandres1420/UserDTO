@@ -1,7 +1,16 @@
 package edu.eci.usermicro.entities;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+@Document
 public class User{
-    String id, name, email, lastName, createdAt;
+    @Id
+    String id;
+    String name, lastName, createdAt;
+    @Indexed( unique = true )
+    String email;
+
 
     public User(String id, String name, String email,String lastName,String createdAt){
         this.id =id;
